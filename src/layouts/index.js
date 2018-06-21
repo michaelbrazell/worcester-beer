@@ -4,8 +4,7 @@ import Helmet from 'react-helmet'
 
 import Header from '../components/header'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'reactstrap';
-// import './index.css'
+import './style.css'
 
 const Layout = ({ children, data }) => (
   <div>
@@ -17,7 +16,7 @@ const Layout = ({ children, data }) => (
       ]}
     />
     <Header siteTitle={data.site.siteMetadata.title} />
-    <div className="container">
+    <div className="container mt-4">
       {children()}
     </div>
   </div>
