@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300');
 
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .site-header {
   background-color: #26547C;
 }
 
 .site-header a {
+  font-family: 'Merriweather', serif;
+  text-transform: uppercase;
   color: #fff;
 }
 
