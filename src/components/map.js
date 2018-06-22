@@ -177,6 +177,161 @@ const containerStyle = {
   height: '450px'
 }
 
+const mapLocations = [
+    {
+        title: 'Greater Good Imperial Brewing',
+        name: 'Greater Good Imperial Brewing',
+        position: {
+            lat: 42.287557,
+            lng: -71.801636
+        }
+    },
+    {
+        title: 'Wormtown Brewery',
+        name: 'Wormtown Brewery',
+        position: {
+            lat: 42.263498,
+            lng: -71.791172
+        }
+    },
+    {
+        title: '3Cross Fermentation Coop',
+        name: '3Cross Fermentation Coop',
+        position: {
+            lat: 42.243875,
+            lng: -71.830257
+        }
+    },
+    {
+        title: 'Flying Dreams Brewing Co.',
+        name: 'Flying Dreams Brewing Co.',
+        position: {
+            lat: 42.254561,
+            lng: -71.825493
+        }
+    },
+    {
+        title: '7 Saws Brewing Company',
+        name: '7 Saws Brewing Company',
+        position: {
+            lat: 42.350053,
+            lng: -71.860057
+        }
+    },
+    {
+        title: 'CraftRoots Brewing',
+        name: 'CraftRoots Brewing',
+        position: {
+            lat: 42.141541,
+            lng: -71.492362
+        }
+    },
+    {
+        title: 'Gardner Ale House',
+        name: 'Gardner Ale House',
+        position: {
+            lat: 42.575736,
+            lng: -71.997048
+        }
+    },
+    {
+        title: 'Homefield Kitchen & Brewery',
+        name: 'Homefield Kitchen & Brewery',
+        position: {
+            lat: 42.115728,
+            lng: -72.106603
+        }
+    },
+    {
+        title: 'Kretschmann Brewery & Beer Garden',
+        name: 'Kretschmann Brewery & Beer Garden',
+        position: {
+            lat: 42.050908,
+            lng: -71.881267
+        }
+    },
+    {
+        title: 'Medusa Brewing Company',
+        name: 'Medusa Brewing Company',
+        position: {
+            lat: 42.390950,
+            lng: -71.566769
+        }
+    },
+    {
+        title: 'Purgatory Beer Company',
+        name: 'Purgatory Beer Company',
+        position: {
+            lat: 42.098538,
+            lng: -71.646514
+        }
+    },
+    {
+        title: 'Rapscallion Brewery',
+        name: 'Rapscallion Brewery',
+        position: {
+            lat: 42.141500,
+            lng: -72.110500
+        }
+    },
+    {
+        title: 'Timberyard Brewing Company',
+        name: 'Timberyard Brewing Company',
+        position: {
+            lat: 42.230953,
+            lng: -72.029140
+        }
+    },
+    {
+        title: 'Tree House Brewing Company',
+        name: 'Tree House Brewing Company',
+        position: {
+            lat: 42.139276,
+            lng: -72.017215
+        }
+    },
+    {
+        title: 'Wachusett Brewing Company',
+        name: 'Wachusett Brewing Company',
+        position: {
+            lat: 42.558417,
+            lng: -71.870781
+        }
+    },
+    {
+        title: 'Stone Cow Brewery',
+        name: 'Stone Cow Brewery',
+        position: {
+            lat: 42.424736,
+            lng: -72.124258
+        }
+    },
+    {
+        title: 'Cold Harbor Brewing',
+        name: 'Cold Harbor Brewing',
+        position: {
+            lat: 42.273907,
+            lng: -71.625122            
+        }
+    },
+    {
+        title: 'Henry and Fran Brewing Co.',
+        name: 'Henry and Fran Brewing Co.',
+        position: {
+            lat: 42.366759,
+            lng: -71.785627
+        }
+    },
+    {
+        title: 'Title',
+        name: 'Title',
+        position: {
+            lat: 42.550053,
+            lng: -71.660057
+        }
+    }
+]
+
 export class MapContainer extends Component {
   state = {
     activeMarker: {},
@@ -215,39 +370,20 @@ export class MapContainer extends Component {
           lat: 42.2625932,
           lng: -71.8022934
         }} >
-        <Marker
-          title={'Greater Good Imperial Brewing'}
-          name={'Greater Good'}
-          onClick={this.onMarkerClick}
-          position={{lat: 42.2881796, lng: -71.79739430000001}} 
-          icon={{
-            url: "/static/tap-handle.png",
-            anchor: new google.maps.Point(12,39.5),
-            scaledSize: new google.maps.Size(12,39.5)
-          }}
-          />
-        <Marker
-          name={'Wormtown Brewery'}
-          onClick={this.onMarkerClick}
-          position={{lat: 42.2676226, lng: -71.78208569999998}} 
-          icon={{
-            url: "/static/tap-handle.png",
-            anchor: new google.maps.Point(12,39.5),
-            scaledSize: new google.maps.Size(12,39.5)
-          }}
-          />
-        <Marker />
-        <Marker
-          name={'3 Cross'}
-          onClick={this.onMarkerClick}
-          position={{lat: 42.2435841, lng: -71.81726859999998}}
-          icon={{
-            url: "/static/tap-handle.png",
-            anchor: new google.maps.Point(12,39.5),
-            scaledSize: new google.maps.Size(12,39.5)
-          }}
-        />
-        <Marker/>
+
+        { mapLocations.map( (location, index ) => (
+            <Marker
+                key={'location'+index}
+                title={location.title}
+                name={location.name}
+                onClick={this.onMarkerClick}
+                position={location.position} 
+            />
+            
+        )) }
+
+       
+        
 
         <InfoWindow
           marker={this.state.activeMarker}
