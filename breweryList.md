@@ -4,7 +4,8 @@
 lat: ,
 lng: 
 2. CraftRoots Brewing, 4 Industrial Road, Milford, MA 01757
-
+lat: ,
+lng: 
 3. Flying Dreams Brewing Co., 455B Park Ave, Worcester, MA 01610
 lat: 42.254561,
 lng: -71.825493
