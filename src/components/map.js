@@ -183,6 +183,7 @@ export class MapContainer extends Component {
     super();
     this.state = {
       locations: [],
+      points: [],
       activeMarker: {},
       selectedPlace: {},
       showingInfoWindow: false
@@ -202,13 +203,28 @@ export class MapContainer extends Component {
       showingInfoWindow: false
     });
   
-    onMapClicked = () => {
-    if (this.state.showingInfoWindow)
-      this.setState({
-        activeMarker: null,
-        showingInfoWindow: false
-      });
+  onMapClicked = () => {
+  if (this.state.showingInfoWindow)
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
+    });
   };
+
+  // This works, might want to use reduce() to instead of .push(), 
+  // GoogleMaps requires an object, not an array
+  calculatePoints = (locations) => {
+    let newState = [];
+    locations.map((location, index) => {
+      newState.push(
+        location.position
+      )
+    })
+    this.setState({
+      points: newState
+    })
+  }
+
   componentDidMount() {
     const locationsRef = firebase.database().ref('breweries');    
     locationsRef.on('value', (snapshot) => {
@@ -225,14 +241,15 @@ export class MapContainer extends Component {
       this.setState({
         locations: newState
       });
+      // Commenting this out. Function works but bounds doesn't.
+      // this.calculatePoints(newState);
     });
   }
   render() {
-    console.log(this.state.locations)
     return (
       <Map 
         google={this.props.google} 
-        zoom={11}
+        zoom={10}
         style={containerStyle}
         styles={mapsStyle}
         initialCenter={{

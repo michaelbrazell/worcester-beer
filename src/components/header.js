@@ -9,7 +9,7 @@ const Header = ({ siteTitle }) => (
       </a>
       <a className="py-4 d-none d-md-inline-block" href="#">Explore</a>
       <a className="py-4 d-none d-md-inline-block" href="#">Events</a>
-      <a className="py-4 d-none d-md-inline-block" href="#">Contribute</a>
+      <Link className="py-4 d-none d-md-inline-block" to="/contribute">Contribute</Link>
       <a className="py-4 d-none d-md-inline-block" href="#">Merch</a>
     </div>
   </nav>

@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5 {
   font-family: 'Merriweather', serif;
 }
 
-p {
+p, label, input, button {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.4em;
 }
