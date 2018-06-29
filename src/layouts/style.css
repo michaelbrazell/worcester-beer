@@ -5,13 +5,21 @@ body {
 }
 
 .site-header {
-  background-color: #26547C;
+  background-color: #FCFCFC;
 }
 
 .site-header a {
-  font-family: 'Merriweather', serif;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
   text-transform: uppercase;
-  color: #fff;
+  color: #26547C;
+}
+
+.site-header a:hover {
+  background-color: #C43B5B;
+  color: #FCFCFC;
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -21,4 +29,13 @@ h1, h2, h3, h4, h5 {
 p, label, input, button {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.4em;
+}
+
+.slider .slide {
+  height: 350px;
+  color: #FCFCFC;
+}
+
+.slider .slide1 {
+  background: linear-gradient(155deg, #C43B5B 10%, #8F2B43 34%, #26547C 75%);
 }

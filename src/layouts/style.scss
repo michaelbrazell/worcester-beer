@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans+Condensed:300');
+
+/* ------------------------------------
+$ Variables
+------------------------------------ */
+
+$primary-blue: #26547C;
+$secondary-blue: #152E44;
+$tertiary-blue: #92D5E6;
+$primary-red: #C43B5B;
+$secondary-red: #8F2B43;
+$primary-white: #FCFCFC;
+$secondary-white: #CFCFCF;
+$primary-green: #D3F6DB;
+$secondary-green: #9AB3A0;
+
+$sans-serif: 'Open Sans Condensed', sans-serif;
+$serif: 'Merriweather', serif;
+
+
+/* ------------------------------------
+$ Globals
+------------------------------------ */
+
+body {
+  font-family: $sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $serif;
+}
+
+p, label, input, button {
+  font-family: $sans-serif;
+  font-size: 1.4em;
+}
+
+/* ------------------------------------
+$ Components
+------------------------------------ */
+
+/* ---- Header ---- */
+.site-header {
+  background-color: $primary-white;
+  h1 {
+    font-family: $sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  a {
+    font-family: $sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: $primary-blue;
+    &.logo {
+      text-transform: none;
+      font-size: 2em;
+      &:hover {
+        background-color: transparent;
+        color: $primary-blue;
+      }
+    }
+    &:hover {
+      background-color: $primary-red;
+      color: $primary-white;
+      text-decoration: none;
+    }
+    
+  }
+}
+
+/* ---- Slider ---- */
+.slider {
+  .slide {
+    height: 350px;
+    color: $primary-white;
+  }
+  .slide1 {
+    background: linear-gradient(155deg, $primary-red 10%, $secondary-red 34%, $primary-blue 75%);
+  }
+}
+
+/* ------------------------------------
+$ Pages
+------------------------------------ */
+
+
+
+/* ------------------------------------
+$ Utilities
+------------------------------------ */
+
+
+
+/* ------------------------------------
+$ Template
+------------------------------------ */
+
+/* ---- Item ---- */
+
+/* Comment */
+
+// Inline

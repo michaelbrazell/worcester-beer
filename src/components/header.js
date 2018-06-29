@@ -2,15 +2,24 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Header = ({ siteTitle }) => (
-  <nav className="site-header sticky-top py-1">
-    <div className="container d-flex flex-column flex-md-row justify-content-between">
-      <a className="py-4" href="#">
-        {siteTitle}
-      </a>
-      <a className="py-4 d-none d-md-inline-block" href="#">Explore</a>
-      <a className="py-4 d-none d-md-inline-block" href="#">Events</a>
-      <Link className="py-4 d-none d-md-inline-block" to="/contribute">Contribute</Link>
-      <a className="py-4 d-none d-md-inline-block" href="#">Merch</a>
+  <nav className="site-header sticky-top">
+    <div className="row no-gutters">
+      <div className="col">
+      <div className="d-flex flex-column justify-content-between justify-content-center">
+        <a className="logo py-3 px-2" href="#">
+          worcester.beer
+        </a>
+      </div>
+      </div>
+      <div className="col-md-auto">
+        <div className="d-flex flex-column flex-md-row justify-content-between">
+          <Link className="p-4 d-none d-md-inline-block" to="/explore">Explore</Link>
+          <Link className="p-4 d-none d-md-inline-block" to="/events">Events</Link>
+          <Link className="p-4 d-none d-md-inline-block" to="/contribute">Contribute</Link>
+          <Link className="p-4 d-none d-md-inline-block" to="/merch">Merch</Link>
+          <Link className="p-4 d-none d-md-inline-block" to="/login">Login</Link>
+        </div>
+      </div>
     </div>
   </nav>
 )
