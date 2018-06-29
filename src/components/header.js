@@ -6,9 +6,9 @@ const Header = ({ siteTitle }) => (
     <div className="row no-gutters">
       <div className="col">
       <div className="d-flex flex-column justify-content-between justify-content-center">
-        <a className="logo py-3 px-2" href="#">
-          worcester.beer
-        </a>
+        <Link to="/" className="logo py-3 px-2">
+          Drink Worcester Beer!
+        </Link>
       </div>
       </div>
       <div className="col-md-auto">

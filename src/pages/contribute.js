@@ -37,6 +37,9 @@ class SecondPage extends Component {
     return (
       <div className="container">
         <h1>Contribute</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rem, 
+        nobis odio animi accusantium excepturi reprehenderit aspernatur exercitationem 
+        provident aut hic repellendus sint, veniam, quaerat sed vitae expedita fugiat quidem.</p>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-6 offset-md-3">
             <form  onSubmit={this.handleSubmit}>
