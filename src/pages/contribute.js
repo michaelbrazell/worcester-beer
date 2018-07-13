@@ -7,6 +7,9 @@ class SecondPage extends Component {
   constructor() {
     super();
     this.state = {
+      name: '',
+      address: '',
+      location: '',
       barName: '',
       barAddress: '',
       bars: []
@@ -14,6 +17,14 @@ class SecondPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  handleLocation = (locationValues) => {
+    console.log('Data: ' + locationValues.name, locationValues.lat, locationValues.lng)
+    // this.setState({
+    //   lat: locationValues.lat,
+    //   lng: locationValues.lng
+    // });
+  }
+  
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -57,7 +68,7 @@ class SecondPage extends Component {
           </div>
         </div>
         <h2>Look up Lat Long</h2>
-        <Contribute />
+        <Contribute onAddLocation={this.handleLocation} />
         
         <div className="mt-5">
           <Link to="/">Go back to the homepage</Link>

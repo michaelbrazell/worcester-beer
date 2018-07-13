@@ -10,6 +10,7 @@ class LocationSearchInput extends React.Component {
     super(props);
     this.state = { 
       address: '',
+      details: '',
       location: []
     };
   }
@@ -21,9 +22,22 @@ class LocationSearchInput extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => this.setState({ location: latLng }))
+      .then(latLng => this.setState({ 
+        details: address,
+        location: latLng 
+      }))
       .catch(error => console.error('Error', error));
   };
+  handleSubmit = (event) => {
+    let locationData = {
+      name: this.state.details,
+      lat: this.state.location.lat,
+      lng: this.state.location.lng
+    }
+    
+    this.props.onAddLocation(locationData);            
+  }
+  
 
   render() {
     return (
@@ -63,9 +77,25 @@ class LocationSearchInput extends React.Component {
               })}
             </div>
             <h4>Results</h4>
-            <p>{this.state.address}</p>
-            <p>{this.state.location.lat}</p>
-            <p>{this.state.location.lng}</p>
+            <form onSubmit={this.handleSubmit()} className="my-3">
+              <div className="form-group">
+                <label htmlFor="nameAddress" className="mt-2 mb-0">Name / Address</label>
+                <input type="text" className="form-control mb-2" name="nameAddress" value={this.state.details}/>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-6">
+                    <label htmlFor="lat" className="mt-2 mb-0">Latitude</label>
+                    <input type="text" className="form-control mb-2" name="lat" value={this.state.location.lat}/>  
+                  </div>
+                  <div className="col-xs-12 col-sm-6">
+                    <label htmlFor="lng" className="mt-2 mb-0">Longitude</label>
+                    <input type="text" className="form-control mb-2" name="lng" value={this.state.location.lng}/>
+                  </div>
+                </div>
+              </div>
+
+              <button className="btn btn-primary">Submit Listing</button>
+            </form>
+            
 
           </div>
         )}
