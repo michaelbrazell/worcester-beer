@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import firebase from '../utilities/firebase.js'
+import Contribute from '../components/contribute.js'
 
 class SecondPage extends Component {
   constructor() {
@@ -40,9 +41,10 @@ class SecondPage extends Component {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rem, 
         nobis odio animi accusantium excepturi reprehenderit aspernatur exercitationem 
         provident aut hic repellendus sint, veniam, quaerat sed vitae expedita fugiat quidem.</p>
+        
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-6 offset-md-3">
-            <form  onSubmit={this.handleSubmit}>
+            <form  onSubmit={this.handleSubmit} className="mb-5">
               <div className="form-group">
                 <label htmlFor="barName">Name</label>
                 <input type="text" className="form-control" name="barName" placeholder="Name of the Bar" onChange={this.handleChange} value={this.state.barName}/>
@@ -54,8 +56,12 @@ class SecondPage extends Component {
             </form>  
           </div>
         </div>
+        <h2>Look up Lat Long</h2>
+        <Contribute />
         
-        <Link to="/">Go back to the homepage</Link>
+        <div className="mt-5">
+          <Link to="/">Go back to the homepage</Link>
+        </div>
       </div>
     )
   }
