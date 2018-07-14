@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from '../utilities/firebase.js'
 import {GoogleApiWrapper} from 'google-maps-react';
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -10,32 +11,61 @@ class LocationSearchInput extends React.Component {
     super(props);
     this.state = { 
       address: '',
-      details: '',
-      location: []
+      name: '',
+      lookupAddress: '',
+      description: '',
+      position: []
     };
   }
 
+  // Used by the GeoCode Lookup
   handleChange = address => {
     this.setState({ address });
   };
 
+  // Used by Geocode lookup to pass the results of address to geocode
+  // and return results, assigning them to the state
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.setState({ 
-        details: address,
-        location: latLng 
+        lookupAddress: address,
+        position: latLng 
       }))
       .catch(error => console.error('Error', error));
   };
-  handleSubmit = (event) => {
-    let locationData = {
-      name: this.state.details,
-      lat: this.state.location.lat,
-      lng: this.state.location.lng
+
+  // Used to update the state of the fields so firebase 
+  // gets its data from the state
+  handleFields = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  // Used to submit the data to firebase
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const itemsRef = firebase.database().ref('bars');
+    const bar = {
+      name: this.state.name,
+      description: this.state.description,
+      address: this.state.address,
+      position: this.state.position,
     }
-    
-    this.props.onAddLocation(locationData);            
+    itemsRef.push(bar);
+    // Reset the fields to blank on submit
+    this.setState({
+      name: '',
+      description: '',
+      address: '',
+      lookupAddress: '',
+      position: [{
+        lat: '',
+        lng: ''
+      }]
+    });
+    console.log(bar)
   }
   
 
@@ -76,19 +106,23 @@ class LocationSearchInput extends React.Component {
                 );
               })}
             </div>
-            <h4>Results</h4>
-            <form onSubmit={this.handleSubmit()} className="my-3">
+            <h4 className="mt-3">Submission</h4>
+            <form onSubmit={(e) => this.handleSubmit(e)} className="">
               <div className="form-group">
-                <label htmlFor="nameAddress" className="mt-2 mb-0">Name / Address</label>
-                <input type="text" className="form-control mb-2" name="nameAddress" value={this.state.details}/>
+                <label htmlFor="name" className="mb-0">Name</label>
+                <input type="text" className="form-control mb-2" name="name" onChange={this.handleFields} value={this.state.name}/>
+                <label htmlFor="description" className="mt-2 mb-0">Description</label>
+                <input type="textarea" className="form-control mb-2" name="description" onChange={this.handleFields} value={this.state.description}/>
+                <label htmlFor="lookupAddress" className="mt-2 mb-0">Address <small>(For accuracy, please use the auto-complete above)</small></label>
+                <input type="text" className="form-control mb-2" name="lookupAddress" onChange={this.handleFields} value={this.state.lookupAddress}/>
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">
                     <label htmlFor="lat" className="mt-2 mb-0">Latitude</label>
-                    <input type="text" className="form-control mb-2" name="lat" value={this.state.location.lat}/>  
+                    <input type="text" className="form-control mb-2" disabled name="lat" onChange={this.handleFields} value={this.state.position.lat}/>  
                   </div>
                   <div className="col-xs-12 col-sm-6">
                     <label htmlFor="lng" className="mt-2 mb-0">Longitude</label>
-                    <input type="text" className="form-control mb-2" name="lng" value={this.state.location.lng}/>
+                    <input type="text" className="form-control mb-2" disabled name="lng" onChange={this.handleFields} value={this.state.position.lng}/>
                   </div>
                 </div>
               </div>
