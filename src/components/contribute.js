@@ -112,7 +112,7 @@ class LocationSearchInput extends React.Component {
                 <label htmlFor="name" className="mb-0">Name</label>
                 <input type="text" className="form-control mb-2" name="name" onChange={this.handleFields} value={this.state.name}/>
                 <label htmlFor="description" className="mt-2 mb-0">Description</label>
-                <input type="textarea" className="form-control mb-2" name="description" onChange={this.handleFields} value={this.state.description}/>
+                <textarea rows="3" className="form-control mb-2" name="description" onChange={this.handleFields} value={this.state.description}/>
                 <label htmlFor="lookupAddress" className="mt-2 mb-0">Address <small>(For accuracy, please use the auto-complete above)</small></label>
                 <input type="text" className="form-control mb-2" name="lookupAddress" onChange={this.handleFields} value={this.state.lookupAddress}/>
                 <div className="row">

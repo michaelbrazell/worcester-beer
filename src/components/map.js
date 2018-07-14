@@ -183,6 +183,8 @@ export class MapContainer extends Component {
     super();
     this.state = {
       locations: [],
+      bars: [],
+      allLocations: [],
       points: [],
       activeMarker: {},
       selectedPlace: {},
@@ -226,8 +228,13 @@ export class MapContainer extends Component {
   }
 
   componentDidMount() {
-    const locationsRef = firebase.database().ref('breweries');    
-    locationsRef.on('value', (snapshot) => {
+    /*
+      Would be good to combine both of these lookups from Firebase
+      Can use ES6 destructuring commented below to get everything into view 
+    */
+    const breweriesRef = firebase.database().ref('breweries');
+    const barsRef = firebase.database().ref('bars');
+    breweriesRef.on('value', (snapshot) => {
       let locations = snapshot.val();
       let newState = [];
       for (let location in locations) {
@@ -244,6 +251,27 @@ export class MapContainer extends Component {
       // Commenting this out. Function works but bounds doesn't.
       // this.calculatePoints(newState);
     });
+    barsRef.on('value', (snapshot) => {
+      let locations = snapshot.val();
+      let newState = [];
+      for (let location in locations) {
+        newState.push({
+        id: locations[location],
+        name: locations[location].name,
+        address: locations[location].address,
+        position: locations[location].position
+        });
+      }
+      this.setState({
+        bars: newState
+      });
+      // Commenting this out. Function works but bounds doesn't.
+      // this.calculatePoints(newState);
+    });
+    // ES6 destructiong to create all locations
+    // this.setState({
+    //   allLocations: [...this.state.locations, ...this.state.bars]
+    // })
   }
   render() {
     return (
@@ -256,8 +284,18 @@ export class MapContainer extends Component {
           lat: 42.2625932,
           lng: -71.8022934
         }} >
-
+        
         { this.state.locations.map( (location, index ) => (
+            <Marker
+                key={'location'+index}
+                title={location.name}
+                name={location.name}
+                onClick={this.onMarkerClick}
+                position={location.position} 
+            />
+        )) }
+
+        { this.state.bars.map( (location, index ) => (
             <Marker
                 key={'location'+index}
                 title={location.name}
