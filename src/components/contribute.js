@@ -14,7 +14,8 @@ class LocationSearchInput extends React.Component {
       name: '',
       lookupAddress: '',
       description: '',
-      position: []
+      position: [],
+      submitter: this.props.submitter
     };
   }
 
@@ -125,6 +126,8 @@ class LocationSearchInput extends React.Component {
                     <input type="text" className="form-control mb-2" disabled name="lng" onChange={this.handleFields} value={this.state.position.lng}/>
                   </div>
                 </div>
+                <label htmlFor="submitter" className="mb-0">Submitted by</label>
+                <input type="text" className="form-control mb-2" name="submitter" onChange={this.handleFields} value={this.state.submitter}/>
               </div>
 
               <button className="btn btn-primary">Submit Listing</button>

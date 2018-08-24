@@ -7,7 +7,6 @@ const LoginPage = () => (
       <div className="row">
         <div className="col-12">
           <h1>Login</h1>
-          <p>This will be the login page</p>
           <LoginHandler />
         </div>
       </div>

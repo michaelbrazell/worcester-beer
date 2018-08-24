@@ -6,12 +6,12 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "firebase": "~4",
-    "firebaseui": "^3.4.0",
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-sass": "^1.0.26",
     "google-maps-react": "^2.0.2",
+    "react-firebaseui": "^3.0.6",
     "react-helmet": "^5.2.0",
     "react-places-autocomplete": "^7.2.0",
     "reactstrap": "^6.1.0"

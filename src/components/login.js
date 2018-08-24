@@ -1,6 +1,5 @@
 import React from 'react';
-import { auth, provider } from '../utilities/firebase.js';
-import firebaseui from 'firebaseui';
+import firebase, { auth, provider } from '../utilities/firebase.js';
 
 class LoginHandler extends React.Component {
   constructor() {
@@ -37,9 +36,6 @@ class LoginHandler extends React.Component {
       } 
     });
   }
-
- 
-  
 
   render() {
     return (
