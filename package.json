@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "firebase": "~4",
+    "firebaseui": "^3.4.0",
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
