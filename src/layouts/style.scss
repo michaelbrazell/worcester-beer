@@ -66,6 +66,27 @@ $ Components
       color: $primary-white;
       text-decoration: none;
     }
+
+    // Login Dropdown
+    img.profile-image {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+    }
+    &.login-dropdown .login-options {
+      display: none;
+    }
+    &.login-dropdown:hover .login-options {
+      display: block;
+      position: absolute;
+      width: 120px;
+      height: 60px;
+      right: 0;
+      top: 84px;
+      background-color: $primary-red;
+      color: $primary-white;  
+      text-align: right;
+    }
     
   }
 }

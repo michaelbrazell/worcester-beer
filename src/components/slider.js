@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Slider = () => (
+const Slider = (props) => (
   <nav className="slider">
     <div className="slide slide1 d-flex justify-content-center align-items-center">
         <img src="https://i.imgur.com/lrByLAx.png" alt="Drink Worcester Beer Logo"/>
