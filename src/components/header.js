@@ -57,7 +57,7 @@ class Header extends React.Component {
               <Link className="p-4 d-none d-md-inline-block" to="/contribute">Contribute</Link>
               <Link className="p-4 d-none d-md-inline-block" to="/merch">Merch</Link>
               {this.state.user ?                
-                <Link className="p-4 d-none d-md-inline-block login-dropdown">{this.state.user.displayName} <img src={this.state.user.photoURL} className="profile-image ml-2" />           </Link>
+                <Link className="p-4 d-none d-md-inline-block login-dropdown" to="/profile">{this.state.user.displayName} <img src={this.state.user.photoURL} className="profile-image ml-2" />           </Link>
                 :
                 <Link className="p-4 d-none d-md-inline-block login-dropdown" onClick={this.login}>Sign in</Link>
               }

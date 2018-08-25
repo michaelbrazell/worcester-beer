@@ -40,22 +40,18 @@ class LoginHandler extends React.Component {
   render() {
     return (
       <div>
-        <p>Login Handler Component</p>
-        {this.state.user ?
-          <button onClick={this.logout}>Log Out</button>                
-          :
-          <button onClick={this.login}>Log In</button>              
-        }
+        
         {this.state.user ?
           <div>
             <div className="user-profile">
-              <p>Hello {this.state.user.displayName}</p>
+              <p>Hello {this.state.user.displayName} <a onClick={this.logout}>(Sign Out)</a></p>
               <img src={this.state.user.photoURL} />
             </div>
           </div>
           :
           <div className="wrapper">
-            <p>Please Login</p>
+            <p>You must be signed in to view your profile</p>
+            <p><button className="btn btn-primary" onClick={this.login}>Sign In</button></p>
           </div>
         }
       </div>

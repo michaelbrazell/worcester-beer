@@ -66,7 +66,6 @@ class LocationSearchInput extends React.Component {
         lng: ''
       }]
     });
-    console.log(bar)
   }
   
 
